@@ -1,0 +1,36 @@
+{
+  "name": "hello-rabbitmq",
+  "version": "1.0.0",
+  "description": "A Node.js program which demonstrate official RabbitMQ's `Hello World` tutorial",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc && npm run lint",
+    "lint": "tslint -c tslint.json 'src/**/*.ts'",
+    "producer": "npm run build && node ./dist/producer.js",
+    "consumer": "npm run build && node ./dist/consumer.js",
+    "runamq": "docker run -d --name white-rabbit --hostname white-rabbit -p 4369:4369 -p 5671:5671 -p5672:5672 -p 25672:25672 rabbitmq:3.6.12",
+    "startamq": "docker start white-rabbit",
+    "stopamq": "docker stop white-rabbit",
+    "cleanamq": "npm run stopamq && docker rm white-rabbit",
+    "tsc": "tsc"
+  },
+  "keywords": [
+    "rabbitmq",
+    "nodejs"
+  ],
+  "author": "wendy.sanarwanto@gmail.com",
+  "license": "MIT",
+  "dependencies": {
+    "@types/amqplib": "^0.5.4",
+    "amqplib": "^0.5.1",
+    "moment": "^2.19.1"
+  },
+  "devDependencies": {
+    "@types/node": "^8.0.47",
+    "nodemon": "^1.12.1",
+    "tsc": "^1.20150623.0",
+    "tslint": "^5.8.0",
+    "typescript": "^2.6.1",
+    "typescript-eslint-parser": "^8.0.1"
+  }
+}
